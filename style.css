@@ -23,7 +23,7 @@ body {
 
 .control-panel {
   padding: 20px;
-  background: #0e093e;
+  background: #4d004d; /* dark magenta */
 }
 
 .label {
@@ -45,12 +45,12 @@ button {
   font-family: inherit;
   font-size: 1em;
   text-decoration: none;
-  color: #0e093e; /* dark blue */
-  background: #c2ffc7; /* light green */
+  color: #4d004d; /* dark magenta */
+  background: #e600e6; /* light magenta */
 }
 
 button:hover {
-  background: #55be9b; /* green */
+  background: #990099; /* magenta */
 }
 
 input[type="range"] {
