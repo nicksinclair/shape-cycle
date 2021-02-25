@@ -28,19 +28,20 @@ let growthRateSlider;
 // VIDEO EXPORT
 const fps = 30;
 let frame = 1;
-let capturer = new CCapture({
-  format: "png",
-  framerate: fps,
-});
+// let capturer = new CCapture({
+//   format: "png",
+//   framerate: fps,
+// });
+let capturer;
 let recording = false;
 let recordButton;
 
 // THEMES
 let dynamicTheme = [];
-let theme1 = [];
-let theme2 = [];
-let theme3 = [];
-let theme4 = [];
+// let theme1 = [];
+// let theme2 = [];
+// let theme3 = [];
+// let theme4 = [];
 let PALETTE = [];
 
 let rings = [];
@@ -161,6 +162,12 @@ function draw() {
 
   // Uncomment to stop interactivity
   // noLoop();
+
+  // Trigger video capture
+  if (capturer) {
+    console.log(recording);
+    capturer.capture(document.getElementById("defaultCanvas0"));
+  }
 }
 
 function generateRings() {
@@ -242,6 +249,10 @@ function evaluateResize() {
 
 function record() {
   recording = true;
+  capturer = new CCapture({
+    format: "png",
+    framerate: fps,
+  });
   capturer.start();
 
   recordButton.textContent = "STOP RECORDING";
@@ -249,6 +260,7 @@ function record() {
   recordButton.onclick = (e) => {
     capturer.stop();
     capturer.save();
+    capturer = null;
     recording = false;
 
     recordButton.textContent = "START RECORDING";
